@@ -1,0 +1,50 @@
+@use "sass:map";
+@use "sass:color";
+@use '../variables' as *;
+
+
+// 
+// Menu navigation used in `.main-sidebar`
+// 
+
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  .menu-item + .menu-item {
+    margin-top: 1px;
+  }
+
+  .menu-link {
+    line-height: $heading-line-height;
+    color: var(--color-neutral);
+    display: flex;
+    padding: map.get($spacers, 3);
+    padding-left: map.get($spacers, 5);
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    transition: 0.05s;
+    
+
+    &:hover {   
+      color: var(--color-neutral);   
+      background-color: color-mix(in srgb, transparent, var(--color-variant) 5%);
+    }
+
+    &.is-active {
+      color: var(--body-color);
+      background-color: var(--color-shaded);
+    }
+  }
+}
+
+
+.menu-label {
+  color: $light;
+  font-size: $size-8;
+  font-weight: $weight-medium;
+  line-height: $heading-line-height;
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: $heading-margin-bottom;
+}

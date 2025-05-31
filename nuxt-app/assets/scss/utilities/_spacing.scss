@@ -1,0 +1,86 @@
+@use "sass:map";
+@use '../variables' as *;
+@use '../mixins' as *;
+
+
+
+// SPACING
+// =========================================
+//
+// Spacings are defined as a map `$spacers` in _variables.scss
+// Create a spacing class for each value, usage example: .mb-4
+//
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+    .#{$abbrev}t-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .#{$abbrev}r-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}b-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .#{$abbrev}l-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}
+
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+
+
+//
+// Create a spacing class for each breakpoint, usage example .mb-4-tablet
+//
+
+@each $breakpoint in map.keys($layout-breakpoints) {
+  @include breakpoint-up($breakpoint) {
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $spacers {
+        .#{$abbrev}-#{$size}-#{$breakpoint} { #{$prop}: $length !important; }
+        .#{$abbrev}t-#{$size}-#{$breakpoint},
+        .#{$abbrev}y-#{$size}-#{$breakpoint} {
+          #{$prop}-top: $length !important;
+        }
+        .#{$abbrev}r-#{$size}-#{$breakpoint},
+        .#{$abbrev}x-#{$size}-#{$breakpoint} {
+          #{$prop}-right: $length !important;
+        }
+        .#{$abbrev}b-#{$size}-#{$breakpoint},
+        .#{$abbrev}y-#{$size}-#{$breakpoint} {
+          #{$prop}-bottom: $length !important;
+        }
+        .#{$abbrev}l-#{$size}-#{$breakpoint},
+        .#{$abbrev}x-#{$size}-#{$breakpoint} {
+          #{$prop}-left: $length !important;
+        }
+      }
+    }
+
+    .mr-auto-#{$breakpoint},
+    .mx-auto-#{$breakpoint} {
+      margin-right: auto !important;
+    }
+
+    .ml-auto-#{$breakpoint},
+    .mx-auto-#{$breakpoint} {
+      margin-left: auto !important;
+    }
+  }
+}

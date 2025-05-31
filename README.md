@@ -1,2 +1,2 @@
-# sidechannel-chiledao-mvp
-AI task evaluation
+# sidechannel-website
+AI-Powered Task Evaluation

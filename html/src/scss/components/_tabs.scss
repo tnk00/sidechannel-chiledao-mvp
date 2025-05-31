@@ -1,0 +1,107 @@
+@use "sass:map";
+@use "sass:color";
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../utilities/visibility'as *;
+
+
+$tab-color: var(--color-shaded) !default;
+$tab-font-size: $body-size !default;
+$tab-line-height: $heading-line-height !default;
+$tab-active-color: var(--color-primary) !default;
+$tab-active-border-color: var(--color-primary) !default;
+$tab-active-border-width: 3px !default;
+$tab-padding-x: map.get($spacers, 3) !default;
+$tab-padding-y: map.get($spacers, 2) !default;
+$tab-divider-width: 1px !default;
+$tab-divider-color: var(--surface-border-color) !default;
+
+$tab-font-size-md: $size-5 !default;
+$tab-padding-x-md: map.get($spacers, 4) !default;
+$tab-padding-y-md: map.get($spacers, 3) !default;
+$tab-active-border-width-md: 4px !default;
+
+$tab-font-size-lg: $size-4 !default;
+$tab-padding-x-lg: map.get($spacers, 5) !default;
+$tab-padding-y-lg: map.get($spacers, 4) !default;
+$tab-active-border-width-lg: 6px !default;
+
+.tabs {
+  display: flex;
+
+  &.is-medium .tab-link {
+    font-size: $tab-font-size-md;
+    padding: $tab-padding-y-md $tab-padding-x-md;
+    // border-top-width: $tab-active-border-width-md;
+    // border-bottom-width: $tab-active-border-width-md;
+    &::after {
+      height: $tab-active-border-width-md;
+    }
+  }
+
+  &.is-large .tab-link {
+    font-size: $tab-font-size-lg;
+    padding: $tab-padding-y-lg $tab-padding-x-lg;
+    // border-top-width: $tab-active-border-width-lg;
+    // border-bottom-width: $tab-active-border-width-lg;
+    &::after {
+      height: $tab-active-border-width-lg;
+    }
+  }
+
+  &.has-divider {
+    border-bottom: solid $tab-divider-width $tab-divider-color;
+
+    .tab-link {
+      // margin-bottom: -$tab-divider-width;
+    }
+  }
+}
+
+.tab-item {}
+
+.tab-link {
+  display: flex;
+  padding: $tab-padding-y $tab-padding-x;
+  // border-top: solid $tab-active-border-width transparent;
+  // border-bottom: solid $tab-active-border-width transparent;
+  color: $tab-color;
+  font-size: $tab-font-size;
+  line-height: $tab-line-height;
+  position: relative;
+  transition: 0.15s;
+
+  &:hover {
+    color: color-mix(in srgb, $tab-color, #000000 15%);
+  }
+
+  &.is-active {
+    color: $tab-active-color;
+    // border-bottom-color: $tab-active-border-color;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: $tab-active-border-width;
+      background-color: $tab-active-border-color;
+      position: absolute;
+      left: 0;
+      bottom: -$tab-divider-width;
+    }
+  }
+}
+
+// 
+// Tab panel
+// Only show active panel
+//
+
+.tab-panel-item {  
+  transition: 0.15s;
+  
+  &:not(.is-active) {
+    @extend %hidden-height;
+    opacity: 0;
+  }
+}

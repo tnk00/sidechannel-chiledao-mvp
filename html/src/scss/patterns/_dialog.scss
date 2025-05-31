@@ -1,0 +1,123 @@
+@use 'sass:map';
+@use '../variables'as *;
+@use '../utilities/visibility'as *;
+
+
+$window-width: 500px !default;
+$overlay-background-color: rgb(0 0 0 / 0.5) !default;
+
+
+//
+// Class added to the body to hide scrollbars
+//
+
+.has-dialog-active {
+  overflow: hidden;
+}
+
+// 
+// Dialog container
+// 
+
+.dialog {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: $zindex-dialog;
+
+  &:not(.is-active) {
+    @extend %hidden-height;
+
+    .panel {      
+      opacity: 0;
+      transform: scale(0.8,0.8);
+    }
+
+    .window-container {      
+      opacity: 0;
+    }
+
+    .window {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+}
+
+
+// 
+// Panel: Full page dialog
+// 
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: 0.2s $deceleration-curve;
+  background-color: var(--body-background);
+  position: relative;
+  box-shadow: 0 0 1px rgb(0 0 0 / 0.2), 0 3px 6px rgb(0 0 0 / 0.1);
+}
+
+.panel-top,
+.panel-bottom {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.panel-body {
+  flex-grow: 1;
+  min-height: 0;
+  position: relative;
+}
+
+
+// 
+// Window
+// 
+
+.window-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  transition: 0.2s $deceleration-curve;
+
+  >.container {
+    width: 100%;
+    padding-top: map.get($spacers, 4);
+    padding-bottom: map.get($spacers, 4);
+  }
+}
+
+.window {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: $window-width;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $white;
+  border-radius: $radius-md;
+  transition: 0.2s $deceleration-curve;
+
+  .window-header {
+    border-bottom: solid 1px $light;
+    padding: map.get($spacers, 4) map.get($spacers, 3);
+    border-radius: calc(#{$radius-md} - 1px) calc(#{$radius-md} - 1px) 0 0;
+  }
+
+  .window-body {
+    padding: map.get($spacers, 5) map.get($spacers, 3);
+    flex-grow: 1;
+  }
+
+  .window-footer {
+    padding: map.get($spacers, 3) map.get($spacers, 3);
+    border-radius: 0 0 calc(#{$radius-md} - 1px) calc(#{$radius-md} - 1px);
+  }
+}

@@ -1,0 +1,444 @@
+@use "sass:map";
+@use "sass:color";
+
+// COLORS
+// =========================================
+
+$primary:   #9BB7DC;
+$secondary: #9BDCC1;
+$accent:    #9BDCC1;
+
+$black:     #000000;
+$darker:    #101E28;
+$dark:      #27333C;
+$light:     #C4C7CA;
+$lighter:   #E1E3E4;
+$lightest:  #f2f2f3;
+$white:     #ffffff;
+
+$alert:    #FF7272;
+$success:  #9BDCC1;
+$warning:  #ffd272;
+
+$themedark-darkest:#101E28;
+$themedark-darker: #27333C;
+$themedark-dark:   #717980;
+$themedark-light:  #A7ACB1;
+$themedark-lighter:#E1E3E4;
+
+// Global
+$contrasted: $darker;
+$shaded:     $dark;   
+$neutral:    $light;
+$muted:      $lighter;
+$subtle:     $lightest;
+$variant:    $white;
+
+
+//
+// Adding colors to `$theme-colors` will create helper clases for Backgrounds, Borders, Buttons, Badges and Texts.
+//
+
+$theme-colors: () !default;
+$theme-colors: map.merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "accent":     $accent,
+    "contrasted": $contrasted,
+    "shaded":     $shaded,
+    "neutral":    $neutral,
+    "muted":      $muted,
+    "subtle":     $subtle,
+    "variant":    $variant,
+    "alert":      $alert,
+    "warning":    $warning,
+    "success":    $success
+  ),
+  $theme-colors
+);
+
+
+//
+// Adding colors to `$text-colors` will create additional helper clases for Texts.
+// Designed for better text control on various backgrounds, including Buttons and Badges.
+//
+
+$text-colors: () !default;
+$text-colors: map.merge(
+  (
+    "on-primary":    $darker,
+    "on-secondary":  $darker,
+    "on-accent":     $darker,
+    "on-contrasted": $variant,
+    "on-shaded":     $variant,
+    "on-neutral":    $darker,
+    "on-muted":      $darker,
+    "on-subtle":     $darker,
+    "on-variant":    $darker,
+    "on-dark":       $white, // Constant color
+    "on-light":      $darker // Constant color
+  ),
+  $text-colors
+);
+
+
+//
+// If a color key is not present in `$text-colors`, use the `color-yiq` function to assign a default for Buttons and Badges.
+//
+
+$contrast-threshold: 150;
+$contrast-text-dark: $darker;
+$contrast-text-light: $white;
+
+
+// ROOT
+// =========================================
+
+$root-text-color: $darker;
+// $root-background-color: $white;
+
+
+// SURFACE
+// =========================================
+// https: //m3.material.io/styles/color/roles#e7d72e44-72e2-4ce9-a18d-df07b1433d18
+$surface-border-color: var(--color-muted);
+
+
+// TYPOGRAPHY
+// =========================================
+
+$font-family-primary: 'Inter', sans-serif;
+
+$weight-light:  300;
+$weight-normal: 400;
+$weight-medium: 500;
+$weight-bold:   700;
+
+$size-1:  3rem;       // 48px
+$size-2:  2rem;       // 32px
+$size-3:  1.5rem;     // 24px
+$size-4:  1.25rem;    // 20px
+$size-5:  1.125rem;   // 18px
+$size-6:  1rem;       // 16px
+$size-7:  0.875rem;   // 14px
+$size-8:  0.75rem;    // 12px
+$size-9:  0.6875rem;  // 11px
+
+$font-sizes: () !default;
+$font-sizes: map.merge(
+  (
+    "size-1":  $size-1,
+    "size-2":  $size-2,
+    "size-3":  $size-3,
+    "size-4":  $size-4,
+    "size-5":  $size-5,
+    "size-6":  $size-6,
+    "size-7":  $size-7,
+    "size-8":  $size-8,
+    "size-9":  $size-9
+  ),
+  $font-sizes
+);
+
+// Headings
+$heading-font-family:   null;
+$heading-color:         null;
+$heading-font-weight:   null;
+$heading-line-height:   1.2;
+$heading-margin-bottom: 0.5rem;
+
+
+// BODY
+// =========================================
+
+$body-color: $root-text-color;
+$body-background: $white;
+$body-size: 1rem;
+$body-line-height: 1.5;
+$body-weight: $weight-light;
+
+
+// HR
+$hr-border-width: 1px;
+$hr-margin-y: 1.5rem;
+$hr-border-color: var(--surface-border-color);
+
+
+// LINKS
+// =========================================
+
+$link-color: var(--color-primary);
+
+
+// BREAKPOINTS
+// =========================================
+
+$mobile:     576px;
+$tablet:     768px;
+$desktop:    992px;
+$widescreen: 1200px;
+$fullhd:     1400px;
+
+$layout-breakpoints: (
+  mobile:     $mobile,
+  tablet:     $tablet,
+  desktop:    $desktop,
+  widescreen: $widescreen,
+  fullhd:     $fullhd
+) !default;
+
+
+// SPACING
+// =========================================
+
+$spacers: () !default;
+$spacers: map.merge(
+  (
+    0: 0,
+    1: 0.25rem, // 4px
+    2: 0.5rem,  // 8px
+    3: 1rem,    // 16px
+    4: 1.5rem,  // 24px
+    5: 2rem,    // 32px 
+    6: 3rem,    // 48px
+    7: 4rem,    // 64px
+    8: 5rem,    // 80px 
+    9: 6rem,    // 96px  
+    10:7rem     // 112px  
+  ),
+  $spacers
+);
+
+
+// BORDER RADIUS
+// =========================================
+
+$radius: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+$radius-pill: 99rem;
+$radius-rounded: 50%;
+
+
+// Z-INDEX
+// =========================================
+
+$zindex-dialog: 1050;
+$zindex-fixed: 1040;
+$zindex-dropdown: 1030;
+$zindex-tooltip: 1020;
+
+
+// EASING CURVES
+// =========================================
+// https: //m2.material.io/design/motion/speed.html#easing
+
+$standard-curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+$sharp-curve: cubic-bezier(0.4, 0.0, 0.6, 1);
+$deceleration-curve: cubic-bezier(0.0, 0.0, 0.2, 1);
+$acceleration-curve: cubic-bezier(0.4, 0.0, 1, 1);
+
+
+// CONTAINER (*)
+// =========================================
+
+$viewport-gap: 1rem;
+$viewport-gap-lg: 3rem;
+
+
+// COLUMNS (*)
+// =========================================
+
+$columns: 12;
+$column-gap: map.get($spacers, 5);
+$column-gap-sm: map.get($spacers, 3);
+
+
+// GRID (*)
+// =========================================
+
+$grid-columns-min: 310px;
+$grid-column-gap: 2vw;
+$grid-row-gap: 2vw;
+
+
+// LISTS (*)
+// =========================================
+
+$list-gap: map.get($spacers, 2);
+$list-gap-md: map.get($spacers, 4);
+$list-gap-lg: map.get($spacers, 8);
+$list-inline-gap: map.get($spacers, 5);
+$list-inline-gap-sm: map.get($spacers, 2);
+$list-inline-gap-lg: map.get($spacers, 9);
+
+
+// ITEMS (*)
+// =========================================
+
+$item-gap: map.get($spacers, 2);
+$item-gap-md: map.get($spacers, 4);
+$item-gap-lg: map.get($spacers, 8);
+
+
+// ICONS (*)
+// =========================================
+
+$icon-size: 24px;
+$icon-size-sm: 18px;
+$icon-size-md: 36px;
+$icon-size-lg: 48px;
+
+
+// BORDERS (*)
+// =========================================
+
+$border-width: 1px;
+$border-color: var(--surface-border-color);
+
+
+// BUTTONS
+// =========================================
+
+$button-font-family: null;
+$button-font-weight: null;
+$button-line-height: $body-line-height;
+$button-background-color: var(--body-color);
+$button-border-width: 1px;
+$button-border-color: var(--body-color);
+$button-color: var(--body-color);
+$button-hover-color: var(--color-variant);
+
+$button-font-size: $body-size;
+$button-padding-x: 0.75rem;
+$button-padding-y: 0.375rem;
+
+$button-font-size-sm: $size-7;
+$button-padding-x-sm: 0.5rem;
+$button-padding-y-sm: 0.25rem;
+
+$button-font-size-lg: $size-5;
+$button-padding-x-lg: 1.25rem;
+$button-padding-y-lg: 0.5rem;
+
+
+// FORMS
+// =========================================
+
+$label-size: $size-7;
+$label-font-weight: $weight-light;
+$label-color: null;
+$label-margin-bottom: map.get($spacers, 2);
+$label-line-height: $heading-line-height;
+
+$input-line-height: $button-line-height;
+$input-font-weight: $body-weight;
+$input-placeholder-color: var(--color-muted);
+$input-radius: $radius;
+$input-border-width: 1px;
+$input-background-color: var(--body-background);
+$input-border-color: var(--color-muted);
+$input-hover-border-color: color-mix(in srgb, var(--color-muted), #000000 10%);
+$input-focus-border-color: var(--color-primary);
+
+$input-font-size: $button-font-size;
+$input-padding-x: $button-padding-x;
+$input-padding-y: $button-padding-y;
+$input-height: calc(#{$input-font-size * $input-line-height} + #{$input-padding-y * 2} + #{$input-border-width * 2});
+$input-height-half: calc(#{$input-font-size * $input-line-height * 0.5} + #{$input-padding-y} + #{$input-border-width});
+
+$input-font-size-sm: $button-font-size-sm;
+$input-padding-x-sm: $button-padding-x-sm;
+$input-padding-y-sm: $button-padding-y-sm;
+$input-height-sm: calc(#{$input-font-size-sm * $input-line-height} + #{$input-padding-y-sm * 2} + #{$input-border-width * 2});
+$input-height-half-sm: calc(#{$input-font-size-sm * $input-line-height * 0.5} + #{$input-padding-y-sm} + #{$input-border-width});
+
+$input-font-size-lg: $button-font-size-lg;
+$input-padding-x-lg: $button-padding-x-lg;
+$input-padding-y-lg: $button-padding-y-lg;
+$input-height-lg: calc(#{$input-font-size-lg * $input-line-height} + #{$input-padding-y-lg * 2} + #{$input-border-width * 2});
+$input-height-half-lg: calc(#{$input-font-size-lg * $input-line-height * 0.5} + #{$input-padding-y-lg} + #{$input-border-width});
+
+
+// LOADER (*)
+// =========================================
+
+$loader-color: var(--color-neutral);
+
+
+// SIDEBAR (*)
+// =========================================
+
+$sidebar-width: 320px;
+
+
+// DIALOG (*)
+// =========================================
+
+$window-width: 500px;
+
+
+// OVERLAY (*)
+// =========================================
+
+$overlay-background-color: rgb(0 0 0 / 0.5);
+
+
+// TABS (*)
+// =========================================
+
+$tab-color: var(--color-muted);
+$tab-active-color: var(--body-color);
+$tab-active-border-color: var(--body-color);
+
+
+// THEMES
+// =========================================
+
+:root {
+  --root-text-color: #{$root-text-color};
+  --body-color: #{$body-color};
+  --body-background: #{$body-background};
+  --link-color: #{$link-color};
+  --heading-color: #{$heading-color};
+  --surface-border-color: #{$surface-border-color};
+  --button-color: #{$button-color};
+  --button-hover-color: #{$button-hover-color};
+  --button-border-color: #{$button-border-color};
+  --button-background-color: #{$button-background-color};
+  --input-background-color: #{$input-background-color};
+  --input-border-color: #{$input-border-color};  
+  .select {
+    --select-background-image: var(--select-indicator);    
+  }
+  
+  @each $color, $value in $theme-colors {     
+    --color-#{$color}: #{$value}; // --color-primary: #{$primary};
+  }
+
+  @each $color, $value in $text-colors {
+    --color-#{$color}: #{$value}; // --color-on-primary: #{$white};
+  }
+}
+
+[data-theme="dark"] {
+  --root-text-color: #{$white};
+  --body-color: #{$white};
+  --body-background: #{$themedark-darkest};
+  --color-contrasted: #{$white};
+  --color-shaded: #{$themedark-lighter};
+  --color-neutral: #{$themedark-light};
+  --color-muted: #{$themedark-dark};
+  --color-subtle: #{$themedark-darker};
+  --color-variant: #{$darker};
+  --color-on-contrasted: #{$darker};
+  --color-on-shaded: #{$darker};
+  --color-on-neutral: #{$darker};
+  --color-on-muted: #{$white};
+  --color-on-variant: #{$white};
+  --surface-border-color: #{$themedark-darker};
+  .select {
+    --select-background-image: var(--select-indicator-variant);
+  }
+}

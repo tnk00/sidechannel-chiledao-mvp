@@ -1,0 +1,143 @@
+@use "sass:map";
+@use "sass:color";
+@use '../functions' as *;
+@use '../variables' as *;
+
+
+.button {
+  border-radius: $radius-pill;
+  font-family: $button-font-family;
+  font-weight: $button-font-weight;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  color: var(--button-color);
+  border: $button-border-width solid var(--button-border-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  padding: $button-padding-y $button-padding-x;
+  background-color: transparent;
+  transition: 0.15s;
+
+  // Prevent child elements from interfering with buttons that have click handlers.
+  >* {
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: var(--button-hover-color);
+    background-color: var(--button-background-color);
+    border-color: transparent;
+  }
+
+  &:active {
+    color: var(--button-hover-color);
+    background-color: color-mix(in srgb, var(--button-background-color), #ffffff 10%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &.is-small {
+    font-size: $button-font-size-sm;
+    padding: $button-padding-y-sm $button-padding-x-sm;
+  }
+
+  &.is-large {
+    font-size: $button-font-size-lg;
+    padding: $button-padding-y-lg $button-padding-x-lg;
+  }
+
+  &.is-fullwidth {
+    display: flex;
+    width: 100%;
+  }
+
+  &.is-clear:not(:hover) {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  @each $color, $key in $theme-colors {
+    &.is-#{$color} {
+      // If a color key is not present in `$text-colors`, use the `color-yiq` function to assign a default.
+      color: if(map.has-key($text-colors, "on-#{$color}"), var(--color-on-#{$color}), color-yiq($key));
+      background-color: var(--color-#{$color});
+      border-color: transparent;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--color-#{$color}), #000000 10%);
+        border-color: transparent;
+      }
+
+      &:active {
+        background-color: color-mix(in srgb, var(--color-#{$color}), #ffffff 10%);
+      }
+
+      &.is-outlined {
+        background-color: transparent;
+        border-color: var(--color-#{$color});
+        color: var(--color-#{$color});
+
+        &:hover {
+          color: if(map.has-key($text-colors, "on-#{$color}"), var(--color-on-#{$color}), color-yiq($key));
+          background-color: var(--color-#{$color});
+          border-color: transparent;
+        }
+
+        &:active {
+          background-color: color-mix(in srgb, var(--color-#{$color}), #ffffff 10%);
+        }
+      }
+
+      &.is-clear:not(:hover) {
+        color: var(--color-#{$color});
+      }
+    }
+  }
+}
+
+
+//
+// BUTTONS WITH ICONS
+//
+
+// Icons dimensions are inherit from buttons font size * line height
+.button .icon {
+  width: $button-line-height * 1em;
+  height: $button-line-height * 1em;
+
+  &:first-child:not(:last-child) {
+    margin-right: 0.25em;
+  }
+
+  &:last-child:not(:first-child) {
+    margin-left: 0.25em;
+  }
+}
+
+// Same horizontal and vertical padding for icon-only buttons
+.button.has-icon-only {
+  padding-left: $button-padding-y;
+  padding-right: $button-padding-y;
+
+  &.is-small {
+    padding-left: $button-padding-y-sm;
+    padding-right: $button-padding-y-sm;
+  }
+
+  &.is-large {
+    padding-left: $button-padding-y-lg;
+    padding-right: $button-padding-y-lg;
+  }
+}

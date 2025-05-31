@@ -1,0 +1,31 @@
+@use "sass:map";
+@use '../variables' as *;
+@use '../mixins' as *;
+
+
+
+// DISPLAYS
+// =========================================
+//
+// Displays are defined as a map `$displays`
+// Create a display class for each value, usage example: .d-flex
+//
+
+$displays: none, inline, inline-block, block, flex, inline-flex !default;
+
+
+@each $value in $displays {
+  .d-#{$value} { display: $value !important; }
+}
+
+//
+// Create a display class for each breakpoint, usage example .d-flex-tablet
+//
+
+@each $breakpoint in map.keys($layout-breakpoints) {
+  @include breakpoint-up($breakpoint) {
+    @each $value in $displays {
+      .d-#{$value}-#{$breakpoint} { display: $value !important; }
+    }
+  }
+}

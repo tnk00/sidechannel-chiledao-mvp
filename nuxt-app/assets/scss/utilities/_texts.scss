@@ -1,0 +1,105 @@
+@use "sass:map";
+@use "sass:color";
+@use '../variables'as *;
+@use '../mixins' as *;
+
+
+//
+// Colors are defined as a map `$theme-colors` in _variables.scss
+// Create a text color class for each value, usage example: .text-primary
+//
+
+@each $color, $key in $theme-colors {
+  .text-#{$color} {
+    color: var(--color-#{$color}) !important;
+  }
+
+  a.text-#{$color} {
+    &:hover {
+      color: color-mix(in srgb, var(--color-#{$color}), #000000 15%) !important;
+    }
+
+    &:active {
+      color: color-mix(in srgb, var(--color-#{$color}), #000000 20%) !important;
+    }
+  }
+}
+
+
+//
+// Colors are defined as a map `$text-colors` in _variables.scss
+// Create a text color class for each value, usage example: .text-on-primary
+//
+
+@each $color, $key in $text-colors {
+  .text-#{$color} {
+    color: var(--color-#{$color}) !important;
+  }
+
+  a.text-#{$color} {
+    &:hover {
+      color: color-mix(in srgb, var(--color-#{$color}), #000000 15%) !important;
+    }
+
+    &:active {
+      color: color-mix(in srgb, var(--color-#{$color}), #000000 20%) !important;
+    }
+  }
+}
+
+
+// Weight
+
+.font-weight-light  { font-weight: $weight-light !important; }
+.font-weight-normal { font-weight: $weight-normal !important; }
+.font-weight-medium { font-weight: $weight-medium !important; }
+.font-weight-bold   { font-weight: $weight-bold !important; }
+
+
+// Text align
+
+.text-left   { text-align: left !important; }
+.text-right  { text-align: right !important; }
+.text-center { text-align: center !important; }
+
+@each $breakpoint in map.keys($layout-breakpoints) {
+  @include breakpoint-up($breakpoint) {
+
+    .text-left-#{$breakpoint} {
+      text-align: left !important;
+    }
+
+    .text-right-#{$breakpoint} {
+      text-align: right !important;
+    }
+
+    .text-center-#{$breakpoint} {
+      text-align: center !important;
+    }
+  }
+}
+
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-line-through {
+  text-decoration: line-through !important;
+}
+
+// Text break
+
+.text-break {
+  overflow-wrap: break-word !important;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

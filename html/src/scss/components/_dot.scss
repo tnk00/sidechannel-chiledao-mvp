@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "sass:color";
+@use '../variables' as *;
+
+
+.dot {
+  width: 0.8em;
+  // margin-bottom: 0.1em;
+  display: inline-block;
+  vertical-align: middle;
+  background-color:var(--color-muted);
+  border-radius: $radius-rounded;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  @each $color, $key in $theme-colors {
+    &.is-#{$color} {
+      background-color: var(--color-#{$color});
+    }
+  }
+}

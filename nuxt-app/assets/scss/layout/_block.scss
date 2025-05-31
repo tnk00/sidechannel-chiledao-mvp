@@ -1,0 +1,11 @@
+@use '../variables' as *;
+
+
+$block-width: 720px;
+
+// Narrow container to use anywhere
+.block {
+  max-width: $block-width;
+  margin-left: auto;
+  margin-right: auto;
+}

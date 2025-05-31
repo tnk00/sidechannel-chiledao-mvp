@@ -1,0 +1,354 @@
+@use "sass:map";
+@use '../functions' as *;
+@use '../variables' as *;
+@use 'loader' as *;
+
+
+$icon-size: 24px !default;
+
+// Custom <select> indicator
+$select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='#{$dark}' d='M7 10l5 5 5-5z'/></svg>");
+$select-indicator-variant: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='#{$light}' d='M7 10l5 5 5-5z'/></svg>");
+
+
+// 
+// Container for `<label>` and `.control` to help with the organization and spacing of vertical forms
+// 
+
+.field {
+  & + & {
+    margin-top: map.get($spacers, 4);
+  }
+}
+
+//
+// Label
+//
+
+.label {
+  display: block;
+  font-size: $label-size;
+  font-weight: $label-font-weight;
+  line-height: $label-line-height;
+  margin-bottom: $label-margin-bottom;
+}
+
+.help {
+  display: block;
+  font-size: $size-9;
+  margin-top: 0.5em;
+}
+
+
+// INPUTS
+// =========================================
+
+.control {
+  position: relative;
+}
+
+.input,
+.textarea,
+.select {
+  display: block;
+  width: 100%;
+  border: solid $input-border-width $input-border-color;
+  padding: $input-padding-y $input-padding-x;
+  border-radius: $input-radius;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  background-color: $input-background-color;
+
+  &:hover {
+    border-color: $input-hover-border-color;
+  }
+
+  &:focus {
+    border-color: $input-focus-border-color;
+    outline: 0;
+  }
+}
+
+
+.input,
+.textarea {
+  &::placeholder {
+    color: $input-placeholder-color;
+    opacity: 1;
+  }
+}
+
+.select {
+  --select-indicator: #{escape-svg($select-indicator)};
+  --select-indicator-variant: #{escape-svg($select-indicator-variant)};
+  appearance: none;
+  background-image: var(--select-background-image);
+  background-repeat: no-repeat;
+  background-position: right $input-padding-x center;
+  background-size: 24px 24px;
+  padding-right: $input-padding-x * 2 + 1.5rem;
+
+  option[disabled] {
+    color: $input-placeholder-color;
+  }
+}
+
+
+//
+// Explicitly set the height for <select> elements to ensure consistent rendering, specifically addressing line height differences on Firefox.
+//
+
+.input,
+.select {
+  height: $input-height;
+
+  &.is-small {
+    height: $input-height-sm;
+  }
+
+  &.is-large {
+    height: $input-height-lg;
+  }
+}
+
+// 
+// Input size variations
+//
+
+.input,
+.select,
+.textarea {
+  &.is-small {
+    font-size: $input-font-size-sm;
+    padding: $input-padding-y-sm $input-padding-x-sm;
+  }
+
+  &.is-large {
+    font-size: $input-font-size-lg;
+    padding: $input-padding-y-lg $input-padding-x-lg;
+  }
+}
+
+.select {
+  &.is-small {
+    padding-right: $input-padding-x-sm * 2 + 1.5rem;
+    background-position: right $input-padding-x-sm center;
+  }
+
+  &.is-large {
+    padding-right: $input-padding-x-lg * 2 + 1.5rem;
+    background-position: right $input-padding-x-lg center;
+  }
+}
+
+
+// 
+// Input with icons and loader
+// 
+
+.control {
+  &.has-icon-right,
+  &.has-icon-left {    
+    > .icon {
+      position: absolute;
+      top: $input-height-half;
+      transform: translateY(-50%);
+
+      &:not(.button-icon) {
+        pointer-events: none;
+      }      
+    }
+
+    // Size variations
+    .input,
+    .select,
+    .textarea {
+      &.is-small~.icon {
+        top: $input-height-half-sm;
+      }
+
+      &.is-large~.icon {
+        top: $input-height-half-lg;
+      }
+    }
+  }
+
+  &.has-icon-right {
+    .input,
+    .select,
+    .textarea {
+      padding-right: calc(#{$input-padding-x} + #{$icon-size} + 0.5rem);
+
+      &.is-small {
+        padding-right: calc(#{$input-padding-x-sm} + #{$icon-size} + 0.5rem);
+
+        ~.icon.is-right {
+          right: $input-padding-x-sm;
+        }
+      }
+
+      &.is-large {
+        padding-right: calc(#{$input-padding-x-lg} + #{$icon-size} + 0.5rem);
+
+        ~.icon.is-right {
+          right: $input-padding-x-lg;
+        }
+      }
+    }
+
+    >.icon.is-right {
+      right: $input-padding-x;
+    }
+
+    // Hide `<select>` indicator
+    .select {
+      background-image: none;
+    }
+  }
+
+  &.has-icon-left {
+    .input,
+    .select,
+    .textarea {
+      padding-left: calc(#{$input-padding-x} + #{$icon-size} + 0.5rem);
+
+      &.is-small {
+        padding-left: calc(#{$input-padding-x-sm} + #{$icon-size} + 0.5rem);
+
+        ~.icon.is-left {
+          left: $input-padding-x-sm;
+        }
+      }
+
+      &.is-large {
+        padding-left: calc(#{$input-padding-x-lg} + #{$icon-size} + 0.5rem);
+
+        ~.icon.is-left {
+          left: $input-padding-x-lg;
+        }
+      }
+    }    
+
+    >.icon.is-left {
+      left: $input-padding-x;
+    }
+  }
+
+
+  &.is-loading {
+    &::after {
+      @extend %loader;
+      position: absolute;
+      z-index: 1;
+      top: calc(#{$input-height} / 2 - 0.5em);      
+      right: calc(#{$input-padding-x} + 0.25em); 
+      pointer-events: none;
+    }
+
+    // Hide right icon when .is-loading
+    &.has-icon-right > .icon.is-right {
+      display: none;
+    }
+
+    // Hide `<select>` indicator when .is-loading
+    .select {
+      background-image: none;
+    }
+  }
+}
+
+
+// 
+// Input color variations
+// 
+
+.input,
+.textarea,
+.select {
+  @each $color, $key in $theme-colors {
+    &.is-#{$color} {
+      border-color: var(--color-#{$color});
+    }
+  }
+}
+
+
+
+// CHECKBOX & RADIO BUTTONS
+// =========================================
+
+.checkbox-control,
+.radio-control {
+  display: inline-flex;
+  position: relative;
+
+  label {
+    display: inline-flex;
+    line-height: 1.5;
+  }
+
+  svg {
+    display: block;
+    flex-shrink: 0;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.25em;
+  }
+}
+
+//
+// Hiding browser's default radio and checkbox
+//
+
+.checkbox-control input[type="checkbox"],
+.radio-control input[type="radio"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.radio-control {
+  svg {
+    fill: var(--color-neutral);
+  }
+
+  input[type="radio"] {
+    &:checked~label svg {
+      fill: var(--color-primary);
+      .radio-icon-unchecked {
+        display: none;
+      }
+    }
+    &:not(:checked)~label svg {
+      .radio-icon-checked {
+        display: none;
+      }
+    }
+  }
+}
+
+.checkbox-control {
+  svg {
+    fill: var(--color-neutral);
+  }
+
+  input[type="checkbox"] {
+    &:checked~label svg {
+      fill: var(--color-primary);
+
+      .checkbox-icon-unchecked {
+        display: none;
+      }
+    }
+
+    &:not(:checked)~label svg {
+      .checkbox-icon-checked {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use "sass:map";
+@use '../variables' as *;
+
+
+$grid-columns-min: 310px !default;
+$grid-column-gap: 2vw !default;
+$grid-row-gap: 2vw !default;
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($grid-columns-min, 1fr));
+  grid-column-gap: $grid-column-gap;
+  grid-row-gap: $grid-row-gap;
+
+  .grid-item {
+    position: relative;
+  }
+}
+
+
+// Helpers
+
+.grid-auto-rows {
+  grid-auto-rows: 1fr
+}

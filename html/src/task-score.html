@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="language" content="es" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+
+  <title>SIDECHANNEL - AI-Powered Task Evaluation</title>
+
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="app-top">
+      <div class="navbar" id="main-navbar">
+        <div class="container is-fluid">
+          <div class="navbar-start">
+            <a class="navbar-brand" href="/" title="Home">
+              sidechannel
+            </a>
+            <span class="is-size-4 is-size-3-tablet">ChileDAO</span>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <ul class="list-inline d-none d-flex-widescreen">
+                <li class="list-item">
+                  <a href="/" class="navbar-link is-active">Workstreams</a>
+                </li>
+                <li class="list-item">
+                  <a href="tasks.html" class="navbar-link">Tasks</a>
+                </li>
+                <li class="list-item">
+                  <a href="payouts.html" class="navbar-link">Payouts</a>
+                </li>
+                <li class="list-item">
+                  <a href="organization.html" class="navbar-link">Organization</a>
+                </li>
+              </ul>
+            </div>  
+            <div class="navbar-item">
+              <button class="button is-accent has-icon-only radius-rounded" title="Connect wallet">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18 13a1 1 0 0 0 0 2h3v-2h-3ZM5 8c-.344 0-.681-.063-1-.176V19a1 1 0 0 0 1 1h15v-3h-2a3 3 0 0 1 0-6h2V8H5Zm0-4a1 1 0 0 0 0 2h13V4H5Zm15 2a2 2 0 0 1 2 2v3.27A2 2 0 0 1 23 13v2a2 2 0 0 1-1 1.73V20a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h13a2 2 0 0 1 2 2v2Z"/>
+                  </svg>                      
+                </span>
+              </button>
+            </div>
+            <button class="menu-button ml-3 d-block d-none-widescreen">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/>
+              </svg> 
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-main">
+      <section class="section">
+        <div class="container">
+          <header class="section-header item">
+            <div class="item-body d-flex align-items-center is-size-5">
+              <h1 class="title font-weight-medium mb-0"><a href="/" class="text-contrasted">Workstreams</a></h1>
+              <span class="icon">
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.293 5.293a1 1 0 0 1 1.338-.069l.076.069 6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L13.586 12 8.293 6.707l-.068-.076a1 1 0 0 1 .068-1.338Z"/></svg>
+              </span>
+              <a href="workstream-tasks.html" class="text-contrasted d-none d-block-mobile">Programa Web3 para Universidades</a>
+            </div>
+            <div class="item-end ml-4">
+              <ul class="list-inline has-gap-small">
+                <li class="list-item">
+                  <a href="workstream-tasks.html" class="button is-small is-muted is-outlined has-icon-only radius-rounded" title="Back">
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M11.293 4.293a1 1 0 1 1 1.414 1.414L7.414 11H19a1 1 0 1 1 0 2H7.414l5.293 5.293.068.076a1 1 0 0 1-1.406 1.406l-.076-.068-7-7a1 1 0 0 1 0-1.414l7-7Z"/>
+                      </svg>                      
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="block pt-5">
+            <div class="mb-4">
+              <h1 class="title is-size-3 is-size-2-mobile">Diseño de ficha informativa “Construye el futuro con blockchain” para difusión estudiantil</h1>
+              <span class="text-muted is-size-7">ID TAS-64</span>
+            </div>
+            <ul class="tabs has-divider mb-4">              
+              <li class="tab-item">
+                <a class="tab-link" href="task.html">Details</a>
+              </li>
+              <li class="tab-item">
+                <a class="tab-link is-active" href="task-score.html">Score</a>
+              </li>
+              <li class="tab-item">
+                <a class="tab-link" href="task-edit.html">Edit</a>
+              </li>
+            </ul>
+            <div class="columns align-items-center  text-center mb-4">
+              <div class="column is-3-mobile mb-3 mb-0-mobile">
+                <div class="line-height-1 is-size-2">173</div>
+                <span class="heading-line-height">Reward</span>
+              </div>
+              <div class="column">
+                <div class="columns">
+                  <div class="column is-4">
+                    <div class="is-size-4 line-height-1">0.7</div>
+                    <span class="d-block is-size-7 text-muted heading-line-height">Value Added</span>
+                  </div>
+                  <div class="column is-4">
+                    <div class="is-size-4 line-height-1">0.5</div>
+                    <span class="d-block is-size-7 text-muted heading-line-height">Complexity</span>
+                  </div>
+                  <div class="column is-4">
+                    <div class="is-size-4 line-height-1">0.4</div>
+                    <span class="d-block is-size-7 text-muted heading-line-height">Scope of Work</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item border-top pt-1 is-size-7 text-muted mb-6">
+              <div class="item-body">Classification: Intermediate</div>
+              <div class="item-end">Reward range: 50-250 tokens.</div>
+            </div>
+            <h4 class="title ml-3">AI Reasoning</h4>
+            <ul class="list text-neutral is-size-7">
+              <li class="list-item">
+                <div class="border border-dashed radius-medium p-2 p-3-mobile">
+                  <b class="d-block mb-1">Value Added (0.7)</b>
+                  <p>La tarea contribuye a la educación y adopción tecnológica (Objetivo Estratégico 2) al difundir información sobre blockchain entre estudiantes. La ficha informativa, aunque introductoria, facilita el acceso a Web3 y promueve la marca ChileDAO, lo que está alineado con el plan de operaciones.</p>
+                </div>
+              </li>
+              <li class="list-item">
+                <div class="border border-dashed radius-medium p-2 p-3-mobile">
+                  <b class="d-block mb-1">Complexity (0.5)</b>
+                  <p>El diseño en Figma requiere habilidades intermedias de diseño gráfico. La distribución mediante código QR implica una coordinación técnica simple pero efectiva. No requiere habilidades de desarrollo avanzadas.</p>
+                </div>
+              </li>
+              <li class="list-item">
+                <div class="border border-dashed radius-medium p-2 p-3-mobile">
+                  <b class="d-block mb-1">Scope of Work (0.4)</b>
+                  <p>El diseño de la ficha y la implementación del código QR requiere planificación y atención al detalle, pero no implica un esfuerzo prolongado. La distribución digital es relativamente sencilla una vez creada la pieza gráfica.</p>
+                </div>
+              </li>
+            </ul>
+            <div class="pl-3 mt-3 text-muted is-size-8">
+              AI Evaluation 05-05-2025 14:51:27 gemini-2.0-flash.
+            </div>  
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="app-bottom">
+      <div class="container">
+        <footer class="py-6 py-8-tablet border-top">
+          <div class="columns">
+            <div class="column is-8-tablet mb-6 mb-0-tablet">
+              <div class="columns">
+                <div class="column is-narrow-mobile mb-6 mb-0-mobile">
+                  <div class="pr-5">
+                    <h4 class="title mb-3">Site</h4>
+                    <ul class="list">
+                      <li class="list-item"><a href="#" class="list-link">Workstreams</a></li>
+                      <li class="list-item"><a href="#" class="list-link">Tasks</a></li>
+                      <li class="list-item"><a href="#" class="list-link">Payouts</a></li>
+                      <li class="list-item"><a href="#" class="list-link">Organization</a></li>
+                    </ul>   
+                  </div>             
+                </div>
+                <div class="column is-narrow-mobile">
+                  <div class="pr-5">
+                    <h4 class="title mb-3">Resources</h4>
+                    <ul class="list">
+                      <li class="list-item"><a href="#" class="list-link">FAQ</a></li>
+                    </ul>  
+                  </div>              
+                </div>
+              </div>
+            </div>
+            <div class="column is-4-tablet">
+              <p>AI supports task evaluation and helps you reward tasks fairly and consistently.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

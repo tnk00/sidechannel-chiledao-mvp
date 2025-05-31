@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "sass:color";
+@use '../functions' as *;
+@use '../variables' as *;
+
+
+$badge-padding-y: 0.1875em !default;
+$badge-padding-x: 0.75em !default;
+
+.badge {
+  font-size: $size-8;
+  padding: $badge-padding-y $badge-padding-x;
+  border-radius: $radius-pill;
+  background-color: var(--color-neutral);
+  white-space: nowrap;
+
+  &.is-medium {
+    font-size: $size-7;
+  }
+
+  @each $color, $key in $theme-colors {
+    &.is-#{$color} {
+      color: if(map.has-key($text-colors, "on-#{$color}"), var(--color-on-#{$color}), color-yiq($key));
+      background-color: var(--color-#{$color});
+    }
+  }
+}
+
+a.badge {
+  color: inherit;
+}

@@ -1,0 +1,37 @@
+@use '../variables' as *;
+
+$border-width: 1px !default;
+$border-color: var(--surface-border-color) !default;
+
+
+.border         { border: $border-width solid $border-color !important; }
+.border-top     { border-top: $border-width solid $border-color !important; }
+.border-right   { border-right: $border-width solid $border-color !important; }
+.border-bottom  { border-bottom: $border-width solid $border-color !important; }
+.border-left    { border-left: $border-width solid $border-color !important; }
+
+.border-0        { border: 0 !important; }
+.border-top-0    { border-top: 0 !important; }
+.border-right-0  { border-right: 0 !important; }
+.border-bottom-0 { border-bottom: 0 !important; }
+.border-left-0   { border-left: 0 !important; }
+
+
+.border-transparent {
+  border-color: transparent !important;
+}
+
+.border-dashed {
+  border-style: dashed !important;
+}
+
+//
+// Colors are defined as a map `$theme-colors` in _variables.scss
+// Create a border color class for each value, usage example: .border-primary
+//
+
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: var(--color-#{$color}) !important;
+  }
+}

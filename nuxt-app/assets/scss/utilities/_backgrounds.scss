@@ -1,0 +1,14 @@
+@use '../variables' as *;
+
+// BACKGROUND COLORS
+// =========================================
+//
+// Colors are defined as a map `$theme-colors` in _variables.scss
+// Create a background color class for each value, usage example: .bg-primary
+//
+
+@each $color, $value in $theme-colors {
+  .bg-#{$color} {
+    background-color: var(--color-#{$color}) !important;
+  }
+}

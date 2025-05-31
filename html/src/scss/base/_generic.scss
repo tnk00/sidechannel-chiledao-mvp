@@ -1,0 +1,74 @@
+@use '../variables' as *;
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: $font-family-primary;
+  color: var(--root-text-color);
+}
+
+body {
+  font-size: $body-size;
+  font-weight: $body-weight;
+  line-height: $body-line-height;
+  color: var(--body-color);
+  background-color: var(--body-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+em {
+  font-style: normal;
+}
+
+b, strong {
+  font-weight: $weight-medium;
+}
+
+a {
+  color: var(--link-color);
+  cursor: pointer;
+
+  &:hover {
+    color: color-mix(in srgb, var(--link-color), #000000 15%);    
+  }
+
+  &:active {
+    color: color-mix(in srgb, var(--link-color), #000000 20%);
+  }
+}
+
+hr {
+  margin-top: $hr-margin-y;
+  margin-bottom: $hr-margin-y;
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+button {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  // Prevent child elements from triggering click events when buttons with click handlers are present.
+  >* {
+    pointer-events: none;
+  }
+}

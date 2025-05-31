@@ -1,0 +1,44 @@
+@use '../variables' as *;
+
+
+$icon-size:    24px !default;
+$icon-size-sm: 18px !default;
+$icon-size-md: 36px !default;
+$icon-size-lg: 48px !default;
+
+
+// ICONS
+// =========================================
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: $icon-size;
+  height: $icon-size;
+
+  img,
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {    
+    fill: currentColor;    
+  }
+
+  &.is-small {
+    width: $icon-size-sm;
+    height: $icon-size-sm;
+  }
+
+  &.is-medium {
+    width: $icon-size-md;
+    height: $icon-size-md;
+  }
+
+  &.is-large {
+    width: $icon-size-lg;
+    height: $icon-size-lg;
+  }
+}

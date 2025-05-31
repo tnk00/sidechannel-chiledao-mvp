@@ -1,0 +1,94 @@
+@use "sass:map";
+@use "sass:color";
+@use "sass:math";
+@use "sass:string";
+@use 'variables' as *;
+
+
+// COLOR CONTRAST FUNCTION
+// Determine optimal text color based on the background's contrast
+// $contrast-threshold range from 0 to 255.
+// =========================================
+// Extracted from Bootstrap's CSS framework.
+
+@function color-yiq($color, $dark: $contrast-text-dark, $light: $contrast-text-light) {
+  $r: color.channel($color, "red");
+  $g: color.channel($color, "green");
+  $b: color.channel($color, "blue");
+
+  $yiq: math.div($r * 299 + $g * 587 + $b * 114, 1000);
+
+  @if ($yiq >=$contrast-threshold) {
+    @return $dark;
+  }
+
+  @else {
+    @return $light;
+  }
+}
+
+
+// DATA URI STRING REEPLACEMENT
+// Update '#' to '%23' in SVGs requiring Sass variables for fill color.
+// =========================================
+// Extracted from Bootstrap's CSS framework.
+//
+// Usage example:
+// str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='#{$primary}'
+// d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"), "#", "%23");
+//
+
+@function str-replace($string, $search, $replace: "") {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1)+$replace+str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+//
+// ESCAPE SVG
+// Complements de str-replace function to work with cleaner svg code
+//
+// Usage example:
+// $select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='#{$primary}' d='M7 10l5 5 5-5z'/></svg>");
+// --select-indicator: #{escape-svg($select-indicator)};
+//
+
+$escaped-characters: (
+  "<": "%3c",
+  ">": "%3e",
+  "#": "%23",
+  "(": "%28",
+  ")": "%29"
+  ) !default;
+
+
+@function escape-svg($string) {
+  @if string.index($string, "data:image/svg+xml") {
+
+    // If the string starts with url(
+    @if string.index($string, "url(")==1 {
+      $svg-content: string.slice($string, 6, -3); // Extract SVG content inside the url()
+
+      // Iterate over the map and replace characters
+      @each $char, $encoded in $escaped-characters {
+        $svg-content: str-replace($svg-content, $char, $encoded);
+      }
+
+      // Rebuild the url() string
+      $string: url("#{$svg-content}");
+    }
+
+    // Handle normal string replacement (non-url strings)
+    @else {
+      @each $char, $encoded in $escaped-characters {
+        $string: str-replace($string, $char, $encoded);
+      }
+    }
+  }
+
+  @return $string;
+}

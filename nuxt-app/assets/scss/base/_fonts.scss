@@ -1,0 +1,19 @@
+// EMBED EXTERNAL FONTS
+// =========================================
+
+$font-embed-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap' !default;
+@import url('#{$font-embed-url}');
+
+
+// EMBED LOCAL FONTS
+// =========================================
+// https: //developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide
+
+// $font-path: '../assets/fonts' !default;
+
+// @font-face {
+//   font-family: "GeistMono";
+//   src: url("#{$font-path}/GeistMonoVF.woff2") format("woff2-variations");
+//   font-weight: 400 700;
+//   font-style: normal;
+// }

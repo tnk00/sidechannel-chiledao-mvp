@@ -1,0 +1,22 @@
+{
+  "name": "starter-html",
+  "version": "1.0.0",
+  "description": "HTML/SASS Starter Setup",
+  "main": "src/index.html",
+  "author": "",
+  "scripts": {
+    "compile:sass": "sass --no-source-map src/scss:src/css",
+    "watch:sass": "sass --no-source-map --watch src/scss:src/css",
+    "serve": "browser-sync start --server src --files src",
+    "postcss": "postcss src/css/*.css -u autoprefixer -r --no-map",
+    "dev": "npm-run-all compile:sass --parallel serve watch:*",
+    "build": "npm-run-all compile:sass postcss"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "browser-sync": "^3.0.4",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.89.0"
+  }
+}

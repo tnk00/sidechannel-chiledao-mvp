@@ -1,0 +1,58 @@
+@use "sass:map";
+@use '../variables'as *;
+
+
+$item-gap:    map.get($spacers, 2) !default;
+$item-gap-sm: 1px !default;
+$item-gap-md: map.get($spacers, 4) !default;
+$item-gap-lg: map.get($spacers, 8) !default;
+
+
+//
+// Flexible structure for content featuring a start, body, and end.
+// Useful, for instance, in lists with an icon as a bullet and a checkbox at the opposite end.
+//
+
+.item {
+  display: flex;
+  position: relative;
+
+  .item-start,
+  .item-end {
+    flex-shrink: 0;
+  }
+
+  .item-body {
+    position: relative;
+    flex-grow: 1;
+  }
+}
+
+//
+// Use '.items' to display '.item' elements vertically.
+// Alternatively, use the '.list' component for another listing format.
+//
+
+.items {
+  .item+.item {
+    margin-top: $item-gap;
+  }
+
+  &.has-gap-small {
+    .item+.item {
+      margin-top: $item-gap-sm;
+    }
+  }
+
+  &.has-gap-medium {
+    .item+.item {
+      margin-top: $item-gap-md;
+    }
+  }
+
+  &.has-gap-large {
+    .item+.item {
+      margin-top: $item-gap-lg;
+    }
+  }
+}

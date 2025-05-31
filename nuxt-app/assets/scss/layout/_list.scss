@@ -1,0 +1,137 @@
+@use "sass:map";
+@use "sass:math";
+@use '../variables' as *;
+
+
+$list-gap:           map.get($spacers, 2) !default;
+$list-gap-md:        map.get($spacers, 4) !default;
+$list-gap-lg:        map.get($spacers, 8) !default;
+$list-inline-gap:    map.get($spacers, 5) !default;
+$list-inline-gap-sm: map.get($spacers, 2) !default;
+$list-inline-gap-lg: map.get($spacers, 9) !default;
+
+
+//
+// Arrange child elements ('.list-item') either vertically or horizontally within '.list' or '.list-inline'.
+//
+
+// Vertical list
+
+.list {
+  .list-item+.list-item {
+    margin-top: $list-gap;
+  }
+
+  &.has-divider {
+    .list-item {
+      border-bottom: $border-width solid $border-color;
+      padding-bottom: $list-gap;
+
+      &:not(:last-child) {
+        margin-bottom: $list-gap;
+      }
+    }
+  }
+
+  &.has-gap-medium {
+    .list-item+.list-item {
+      margin-top: $list-gap-md;
+    }
+
+    &.has-divider {
+      .list-item {
+        padding-bottom: $list-gap-md;
+
+        &:not(:last-child) {
+          margin-bottom: $list-gap-md;
+        }
+      }
+    }
+  }
+
+  &.has-gap-large {
+    .list-item+.list-item {
+      margin-top: $list-gap-lg;
+    }
+
+    &.has-divider {
+      .list-item {
+        padding-bottom: $list-gap-lg;
+
+        &:not(:last-child) {
+          margin-bottom: $list-gap-lg;
+        }
+      }
+    }
+  }
+}
+
+// Inline list
+
+.list-inline {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: math.div(-$list-inline-gap, 2);
+  margin-right: math.div(-$list-inline-gap, 2);
+
+  .list-item {
+    padding-left: math.div($list-inline-gap, 2);
+    padding-right: math.div($list-inline-gap, 2);
+  }
+
+  &.has-gap-small {
+    margin-left: math.div(-$list-inline-gap-sm, 2);
+    margin-right: math.div(-$list-inline-gap-sm, 2);
+
+    .list-item {
+      padding-left: math.div($list-inline-gap-sm, 2);
+      padding-right: math.div($list-inline-gap-sm, 2);
+    }
+  }
+
+  &.has-gap-large {
+    margin-left: math.div(-$list-inline-gap-lg, 2);
+    margin-right: math.div(-$list-inline-gap-lg, 2);
+
+    .list-item {
+      padding-left: math.div($list-inline-gap-lg, 2);
+      padding-right: math.div($list-inline-gap-lg, 2);
+    }
+  }
+
+  // Add vertical spacing on list items when they break into another line
+  &.has-gap-y {
+    margin-top: -$list-inline-gap;
+
+    .list-item {
+      padding-top: $list-inline-gap;
+    }
+  }
+
+  &.has-gap-y-small {
+    margin-top: -$list-inline-gap-sm;
+
+    .list-item {
+      padding-top: $list-inline-gap-sm;
+    }
+  }
+
+  &.has-gap-y-large {
+    margin-top: -$list-inline-gap-lg;
+
+    .list-item {
+      padding-top: $list-inline-gap-lg;
+    }
+  }
+}
+
+
+// List link
+
+.list-link {
+  color: var(--color-muted);
+
+  &.is-active {
+    color: var(--body-color);
+  }
+}

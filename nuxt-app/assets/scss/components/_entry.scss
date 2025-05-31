@@ -1,0 +1,108 @@
+@use "sass:map";
+@use '../variables' as *;
+
+// Container for WYSIWYG Editors
+// styles on html tags without classes
+
+.entry {
+  p,
+  dl,
+  ol,
+  ul,
+  blockquote,
+  pre,
+  table,
+  img {
+    &:not(:last-child) {
+      margin-bottom: 1.5em;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+    color: $heading-color;
+    line-height: $heading-line-height;    
+    margin-bottom: $heading-margin-bottom;
+
+    &:not(:first-child) {
+      margin-top: 1.5em;
+    }
+  }
+
+  h1 { font-size: $size-1; }
+  h2 { font-size: $size-2; }
+  h3 { font-size: $size-3; }
+  h4 { font-size: $size-4; }
+  h5 { font-size: $size-5; }
+  h6 { font-size: $size-6; }
+
+  b, strong {
+    font-weight: $weight-medium;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  ul, ol {
+    margin-left: 2em;
+  }
+
+  ul {
+    list-style-type: disc;  
+  }
+
+  li + li {
+    margin-top: 0.25em;
+  }
+
+  blockquote {
+    border: solid 1px var(--surface-border-color);
+    padding: 0.75em;
+  }
+
+  code {
+    font-size: 92%;
+    padding: 0.125em 0.25em;
+    background-color: var(--color-neutral);
+  }
+
+  img {
+    display: block;
+  }
+
+  //
+  // Colored bullets list
+  //
+
+  // ul li {
+  //   list-style: none; 
+
+  //   &::before {
+  //     content: "\2022";
+  //     display: inline-block;
+  //     color: $primary; 
+  //     font-size: 1em;    
+  //     width: 1em;
+  //     margin-left: -1em;
+  //   }
+  // }
+
+  // ol {
+  //   list-style: none; 
+  //   counter-reset: li; 
+
+  //   li {
+  //     counter-increment: li;
+
+  //     &::before {
+  //       content: counter(li) ". "; 
+  //       display: inline-block; 
+  //       color: $primary;      
+  //       width: 1em;
+  //       margin-left: -1em;
+  //     }
+  //   }
+  // }
+}

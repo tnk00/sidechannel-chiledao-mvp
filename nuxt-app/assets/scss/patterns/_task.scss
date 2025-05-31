@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../variables' as *;
+@use '../mixins' as *;
+
+
+// List of tasks
+.task-reward {
+  display: flex;
+}
+
+.score-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-left: map.get($spacers, 4);
+  padding-top: map.get($spacers, 2);
+  padding-bottom: map.get($spacers, 2);
+  border-left: $border-width solid var(--color-muted);
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  margin-right: map.get($spacers, 3);
+  line-height: $heading-line-height;
+}

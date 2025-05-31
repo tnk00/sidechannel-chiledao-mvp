@@ -1,0 +1,12 @@
+// Set of reusable CSS properties to completely hide an element
+%hidden-height {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="language" content="es" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+
+  <title>SIDECHANNEL - AI-Powered Task Evaluation</title>
+
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="app-top">
+      <div class="navbar" id="main-navbar">
+        <div class="container is-fluid">
+          <div class="navbar-start">
+            <a class="navbar-brand" href="/" title="Home">
+              sidechannel
+            </a>
+            <span class="is-size-4 is-size-3-tablet">ChileDAO</span>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <ul class="list-inline d-none d-flex-widescreen">
+                <li class="list-item">
+                  <a href="/" class="navbar-link is-active">Workstreams</a>
+                </li>
+                <li class="list-item">
+                  <a href="tasks.html" class="navbar-link">Tasks</a>
+                </li>
+                <li class="list-item">
+                  <a href="payouts.html" class="navbar-link">Payouts</a>
+                </li>
+                <li class="list-item">
+                  <a href="organization.html" class="navbar-link">Organization</a>
+                </li>
+              </ul>
+            </div>  
+            <div class="navbar-item">
+              <button class="button is-accent has-icon-only radius-rounded" title="Connect wallet">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18 13a1 1 0 0 0 0 2h3v-2h-3ZM5 8c-.344 0-.681-.063-1-.176V19a1 1 0 0 0 1 1h15v-3h-2a3 3 0 0 1 0-6h2V8H5Zm0-4a1 1 0 0 0 0 2h13V4H5Zm15 2a2 2 0 0 1 2 2v3.27A2 2 0 0 1 23 13v2a2 2 0 0 1-1 1.73V20a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h13a2 2 0 0 1 2 2v2Z"/>
+                  </svg>                      
+                </span>
+              </button>
+            </div>
+            <button class="menu-button ml-3 d-block d-none-widescreen">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/>
+              </svg> 
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-main">
+      <section class="section">
+        <div class="container">
+          <header class="section-header item">
+            <div class="item-body d-flex align-items-center is-size-5">
+              <h1 class="title font-weight-medium mb-0"><a href="/" class="text-contrasted">Workstreams</a></h1>
+              <span class="icon">
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.293 5.293a1 1 0 0 1 1.338-.069l.076.069 6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 1 1-1.414-1.414L13.586 12 8.293 6.707l-.068-.076a1 1 0 0 1 .068-1.338Z"/></svg>
+              </span>
+              <span>Programa Web3 para Universidades</span>
+            </div>
+            <div class="item-end ml-4">
+              <ul class="list-inline has-gap-small">
+                  <li class="list-item">
+                    <button class="button is-small is-muted is-outlined has-icon-only radius-rounded" title="More">
+                      <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M10 19a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm0-7a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm0-7a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z"/>
+                        </svg>                      
+                      </span>
+                    </button>
+                  </li>
+                  <li class="list-item">
+                    <button class="button is-small is-muted is-outlined has-icon-only radius-rounded" title="Back">
+                      <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M11.293 4.293a1 1 0 1 1 1.414 1.414L7.414 11H19a1 1 0 1 1 0 2H7.414l5.293 5.293.068.076a1 1 0 0 1-1.406 1.406l-.076-.068-7-7a1 1 0 0 1 0-1.414l7-7Z"/>
+                        </svg>                      
+                      </span>
+                    </button>
+                  </li>
+              </ul>
+            </div>
+          </header>
+          <nav class="item mb-4">
+            <div class="item-body d-flex align-items-center">
+              <ul class="list-inline font-weight-medium is-size-7">
+                <li class="list-item"><a href="#" class="list-link is-active">All</a></li>
+                <li class="list-item"><a href="#" class="list-link">Draft</a></li>
+                <li class="list-item"><a href="#" class="list-link">Active</a></li>
+                <li class="list-item"><a href="#" class="list-link">Completed</a></li>
+                <li class="list-item"><a href="#" class="list-link">Paused</a></li>
+              </ul>
+            </div>
+            <div class="item-end ml-4">
+              <ul class="list-inline has-gap-small">
+                <div class="list-item">
+                  <button class="button is-primary is-clear">
+                    <span class="icon">
+                      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M2 21v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H5.414l.541.541.31.286A8.749 8.749 0 0 0 12.003 20 7.999 7.999 0 0 0 20 12a1 1 0 1 1 2 0 10 10 0 0 1-10 10h-.004a10.75 10.75 0 0 1-7.05-2.67l-.393-.363L4 18.414V21a1 1 0 1 1-2 0Zm0-9A10 10 0 0 1 12 2h.004l.519.015a10.75 10.75 0 0 1 6.53 2.655l.394.363.553.553V3a1 1 0 1 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 1 1 0-2h2.586l-.541-.541-.31-.286A8.75 8.75 0 0 0 11.996 4 8 8 0 0 0 4 12a1 1 0 1 1-2 0Z"/></svg>
+                    </span>
+                    <span>AI Evaluation</span>
+                  </button>
+                </div>
+                <div class="list-item">
+                  <a href="task-new.html" class="button is-primary" title="New task">New task</a>
+                </div>
+              </ul>
+            </div>
+          </nav>
+          <div class="items has-gap-small">          
+            <div class="item bg-subtle radius-medium p-3 p-4-tablet">
+              <div class="item-body d-flex flex-column">
+                <div class="flex-grow-1">
+                  <h3 class="title is-size-5 mb-2"><a href="task.html" class="text-contrasted">Diseño de ficha informativa “Construye el futuro con blockchain” para difusión estudiantil</a></h3>
+                </div>
+                <div>
+                  <ul class="list-inline has-gap-small is-size-7">
+                    <li class="list-item">
+                      <div class="d-flex align-items-center">
+                        <span class="dot is-alert mr-1"></span>
+                        <span class="text-muted">TAS-64</span>
+                      </div>                      
+                    </li>
+                    <li class="list-item">
+                      <span class="badge is-primary">In progress</span>
+                    </li>
+                    <li class="list-item">
+                      <div class="d-flex align-items-center">
+                        <span class="icon is-small text-muted mr-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M18 21v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2a1 1 0 1 1-2 0v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2a1 1 0 1 1-2 0ZM15 7a3 3 0 1 0-6 0 3 3 0 0 0 6 0Zm2 0A5 5 0 1 1 7 7a5 5 0 0 1 10 0Z"/>
+                          </svg>
+                        </span>
+                        <span class="text-muted">Allan Koryzma</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="item-end ml-4 d-flex align-items-center">
+                <div class="task-reward">
+                  <div class="score">
+                    <ul class="list is-size-7">
+                      <li class="list-item">0.7 <span class="text-muted">(V)</span></li>
+                      <li class="list-item">0.5 <span class="text-muted">(C)</span></li>
+                      <li class="list-item">0.4 <span class="text-muted">(S)</span></li>
+                    </ul>
+                  </div>
+                  <div class="score-total">
+                    <div class="line-height-1 is-size-2">173</div>
+                    <span class="heading-line-height">Reward</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item bg-subtle radius-medium p-3 p-4-tablet">
+              <div class="item-body d-flex flex-column">
+                <div class="flex-grow-1">
+                  <h3 class="title is-size-5 mb-2"><a href="task.html" class="text-contrasted">Gestión de vínculo institucional con Centro de Innovación Universitaria</a></h3>
+                </div>
+                <div>
+                  <ul class="list-inline has-gap-small is-size-7">
+                    <li class="list-item">
+                      <div class="d-flex align-items-center">
+                        <span class="dot mr-1"></span>
+                        <span class="text-muted">TAS-63</span>
+                      </div>                      
+                    </li>
+                    <li class="list-item">
+                      <span class="badge is-success">Done</span>
+                    </li>
+                    <li class="list-item">
+                      <div class="d-flex align-items-center">
+                        <span class="icon is-small text-muted mr-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M18 21v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2a1 1 0 1 1-2 0v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2a1 1 0 1 1-2 0ZM15 7a3 3 0 1 0-6 0 3 3 0 0 0 6 0Zm2 0A5 5 0 1 1 7 7a5 5 0 0 1 10 0Z"/>
+                          </svg>
+                        </span>
+                        <span class="text-muted">Allan Koryzma</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="item-end ml-4 d-flex align-items-center">
+                <div class="task-reward">
+                  <div class="score">
+                    <ul class="list is-size-7">
+                      <li class="list-item">0.8 <span class="text-muted">(V)</span></li>
+                      <li class="list-item">0.6 <span class="text-muted">(C)</span></li>
+                      <li class="list-item">0.5 <span class="text-muted">(S)</span></li>
+                    </ul>
+                  </div>
+                  <div class="score-total">
+                    <div class="line-height-1 is-size-2">234</div>
+                    <span class="heading-line-height">Reward</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item bg-subtle radius-medium p-3 p-4-tablet">
+              <div class="item-body d-flex flex-column">
+                <div class="flex-grow-1">
+                  <h3 class="title is-size-5 mb-2"><a href="task.html" class="text-contrasted">Participación en programa de innovación del Centro de Innovación Universitaria</a></h3>
+                </div>
+                <div>
+                  <ul class="list-inline has-gap-small is-size-7">
+                    <li class="list-item">
+                      <div class="d-flex align-items-center">
+                        <span class="dot mr-1"></span>
+                        <span class="text-muted">TAS-65</span>
+                      </div>                      
+                    </li>
+                    <li class="list-item">
+                      <span class="badge is-muted">Draft</span>
+                    </li>
+                    <li class="list-item">
+                      <div class="d-flex align-items-center">
+                        <span class="icon is-small text-muted mr-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M18 21v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2a1 1 0 1 1-2 0v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2a1 1 0 1 1-2 0ZM15 7a3 3 0 1 0-6 0 3 3 0 0 0 6 0Zm2 0A5 5 0 1 1 7 7a5 5 0 0 1 10 0Z"/>
+                          </svg>
+                        </span>
+                        <span class="text-muted">Allan Koryzma</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="item-end ml-4 d-flex align-items-center">
+                <div class="task-reward">
+                  <div class="score-total">
+                    <div class="line-height-1 is-size-2">-</div>
+                    <span class="heading-line-height">Reward</span>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="app-bottom">
+      <div class="container">
+        <footer class="py-6 py-8-tablet border-top">
+          <div class="columns">
+            <div class="column is-8-tablet mb-6 mb-0-tablet">
+              <div class="columns">
+                <div class="column is-narrow-mobile mb-6 mb-0-mobile">
+                  <div class="pr-5">
+                    <h4 class="title mb-3">Site</h4>
+                    <ul class="list">
+                      <li class="list-item"><a href="#" class="list-link">Workstreams</a></li>
+                      <li class="list-item"><a href="#" class="list-link">Tasks</a></li>
+                      <li class="list-item"><a href="#" class="list-link">Payouts</a></li>
+                      <li class="list-item"><a href="#" class="list-link">Organization</a></li>
+                    </ul>   
+                  </div>             
+                </div>
+                <div class="column is-narrow-mobile">
+                  <div class="pr-5">
+                    <h4 class="title mb-3">Resources</h4>
+                    <ul class="list">
+                      <li class="list-item"><a href="#" class="list-link">FAQ</a></li>
+                    </ul>  
+                  </div>              
+                </div>
+              </div>
+            </div>
+            <div class="column is-4-tablet">
+              <p>AI supports task evaluation and helps you reward tasks fairly and consistently.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+@use '../variables' as *;
+
+
+$loader-color: var(--color-neutral) !default;
+
+// Spinning loader
+%loader {
+  animation: loaderAnimation 500ms infinite linear;
+  border: 2px solid $loader-color;
+  border-radius: $radius-rounded;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  width: 1em;
+}
+
+.loader {
+  @extend %loader;
+}
+
+
+@keyframes loaderAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
