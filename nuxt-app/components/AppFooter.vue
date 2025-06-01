@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="column is-4-tablet">
-          <p>AI supports task evaluation and helps you reward tasks fairly and consistently.</p>
+          <p>AI-Powered Task Evaluation for Fair Rewards.</p>
         </div>
       </div>
     </footer>
