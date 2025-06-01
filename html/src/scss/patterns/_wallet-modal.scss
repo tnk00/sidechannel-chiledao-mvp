@@ -31,7 +31,7 @@
 .wallet-modal {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  // height: 100%;
   background-color: var(--color-muted);
   border-radius: $radius-md;
   box-shadow: 0 0 1px rgba(0,0,0,.1),0 3px 6px rgba(0,0,0,.05);
@@ -47,6 +47,14 @@
 .wallet-modal-footer {
   flex-shrink: 0;
 }
+
+.wallet-modal-header {
+  padding-bottom: map.get($spacers, 1);
+}
+
+// .wallet-modal-footer {
+//   padding-bottom: map.get($spacers, 3);
+// }
 
 .wallet-modal-body {
   min-width: 0;

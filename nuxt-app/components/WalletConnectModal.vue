@@ -2,11 +2,11 @@
   <Transition name="slide-down">
     <div v-if="show" class="dialog-wallet" @click="onClickOutside">
       <div class="dialog-background"></div>
-      <div class="wallet-modal-container" ref="content">      
-        <div class="wallet-modal">
+      <div class="wallet-modal-container">      
+        <div class="wallet-modal" ref="content">
           <header class="wallet-modal-header item align-items-center">
-              <div class="item-body"><span class="is-size-7 font-weight-medium">Connected</span></div>
-              <div class="item-end">
+              <div class="item-body"><span class="heading-line-height is-size-7 font-weight-medium">Connected</span></div>
+              <!-- <div class="item-end">
                 <button class="button is-small is-outlined has-icon-only radius-rounded" @click="emit('close')">
                   <span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -14,12 +14,12 @@
                     </svg>                      
                   </span>
                 </button>
-              </div>
+              </div> -->
           </header>
           <div class="wallet-modal-body">
             <div class="wallet-modal-scroller text-center">            
                 <figure class="avatar mx-auto mb-2"><img src="/avatar.png" alt=""></figure>
-                <h4 class="title is-size-7 mb-1">Wallet Name</h4>
+                <h4 class="title is-size-7 mb-0">Wallet Name</h4>
                 <span class="is-size-8 text-break">{{ shortenAddress(walletAddress) }}</span>            
             </div>          
           </div>
