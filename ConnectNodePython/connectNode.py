@@ -16,7 +16,8 @@ substrate = SubstrateInterface(
     # For Kusama: "wss://kusama-rpc.polkadot.io"
     # For Paseo Testnet: "wss://paseo.rpc.amforc.com"
     # For Paseo Asset Hub: "wss://sys.ibp.network/asset-hub-paseo"
-    url="wss://sys.ibp.network/asset-hub-paseo"
+    # For Passet Hub Smart Contracts: "wss://testnet-passet-hub.polkadot.io"
+    url="wss://testnet-passet-hub.polkadot.io"
 )
 
 # Verify connection
