@@ -113,12 +113,19 @@
           </template>
           <div v-else class="text-center">
             <p class="text-center">Not scored yet</p>
-            <button class="button is-primary is-clear">
+            <button class="button is-primary is-clear" @click="handleAIEvaluation">
               <span class="icon">
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M2 21v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H5.414l.541.541.31.286A8.749 8.749 0 0 0 12.003 20 7.999 7.999 0 0 0 20 12a1 1 0 1 1 2 0 10 10 0 0 1-10 10h-.004a10.75 10.75 0 0 1-7.05-2.67l-.393-.363L4 18.414V21a1 1 0 1 1-2 0Zm0-9A10 10 0 0 1 12 2h.004l.519.015a10.75 10.75 0 0 1 6.53 2.655l.394.363.553.553V3a1 1 0 1 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 1 1 0-2h2.586l-.541-.541-.31-.286A8.75 8.75 0 0 0 11.996 4 8 8 0 0 0 4 12a1 1 0 1 1-2 0Z"/></svg>
               </span>
               <span>AI Evaluation</span>
             </button>
+            <div v-if="evaluationResult">
+              <h3>Resultado de la Evaluación AI:</h3>
+              <p>{{ evaluationResult }}</p>
+            </div>
+            <div v-if="error">
+              <p style="color: red;">Error: {{ error }}</p>
+            </div>
           </div>          
         </div>
         <div v-else-if="activeTab === 'edit'">
@@ -254,6 +261,9 @@
   const sectionSubtitle = ref(workstream?.title || '')
   const activeTab = ref('details')
 
+  const isLoading = ref(false);
+  const evaluationResult = ref(null);
+  const error = ref(null);
 
   const getTaskStatusBadge = (status) => {
     const map = {
@@ -281,4 +291,40 @@
   useSeoMeta({
     title: `${sectionTitle.value} - ${sectionSubtitle.value} - ${task?.title}`
   })
+
+  // Datos de ejemplo para el prompt y el texto a analizar
+  const userPrompt = "Analiza el sentimiento de este texto y resume su contenido en no más de 50 palabras.";
+  const textToAnalyze = "El producto recibido superó mis expectativas. La calidad es excepcional y la entrega fue sorprendentemente rápida. ¡Definitivamente lo recomendaré a mis amigos!";
+  // en task?.description está la descripción a evaluar
+
+  isLoading.value = false;
+  evaluationResult.value = null;
+  error.value = null;
+
+  async function handleAIEvaluation() {
+    isLoading.value = true;
+    evaluationResult.value = null; // Reiniciar el resultado
+    error.value = null; // Reiniciar errores
+
+    try {
+      // Usamos $fetch de Nuxt, que es un wrapper para fetch que funciona tanto en cliente como en servidor
+      const response = await $fetch('/api/evaluate-ai', {
+        method: 'POST',
+        body: {
+          task: task, // Convertimos la tarea a JSON
+        }
+      });
+
+      if (response && response.success) {
+        evaluationResult.value = response.evaluationResult;
+      } else {
+        error.value = 'No se pudo obtener una respuesta válida de la evaluación AI.';
+      }
+    } catch (err) {
+      console.error('Error al llamar a la ruta de servidor:', err);
+      error.value = err.data?.message || 'Ocurrió un error inesperado al procesar la evaluación.';
+    } finally {
+      isLoading.value = false;
+    }
+  }
 </script>

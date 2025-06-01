@@ -38,6 +38,18 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@pinia/nuxt']
+  modules: ['@pinia/nuxt'],
+
+  runtimeConfig: {
+    // Estas variables SOLO estarán disponibles en el servidor
+    geminiApiKey: process.env.GEMINI_API_KEY,
+    // Las variables bajo 'public' estarán disponibles en el cliente,
+    // pero NO DEBES poner tu clave API aquí.
+    // public: {
+    //   // Puedes poner aquí cosas que sean seguras de exponer en el cliente,
+    //   // como la URL base de tu propia API de Nuxt.
+    //   apiBase: '/api'
+    // }
+  }
 
 })
