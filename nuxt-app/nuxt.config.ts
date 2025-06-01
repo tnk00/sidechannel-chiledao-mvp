@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'netlify', // O 'netlify-edge' si quieres usar Edge Functions
   },
-  ssr: true,
 
   app: {
     head: {
