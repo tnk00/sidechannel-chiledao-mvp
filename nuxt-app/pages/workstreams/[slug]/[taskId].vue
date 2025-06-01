@@ -85,10 +85,10 @@
             <div class="item border-top pt-1 is-size-7 text-muted mb-6">
               <div class="item-body">Classification: {{ taskClassification }}</div>
               <div class="item-end">Reward range:
-                <div v-if="taskClassification === 'simple'">5-50 tokens</div>
-                <div v-else-if="taskClassification === 'intermediate'">50-250 tokens</div>
-                <div v-else-if="taskClassification === 'complex'">250-1000 tokens</div>
-                <div v-else>Unknown classification</div>
+                <template v-if="taskClassification === 'simple'">5-50 tokens</template>
+                <template v-else-if="taskClassification === 'intermediate'">50-250 tokens</template>
+                <template v-else-if="taskClassification === 'complex'">250-1000 tokens</template>
+                <template v-else>Unknown</template>
               </div>
             </div>
             <h4 class="title ml-3">AI Reasoning</h4>
