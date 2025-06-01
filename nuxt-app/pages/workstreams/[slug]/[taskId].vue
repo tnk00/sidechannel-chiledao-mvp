@@ -83,8 +83,13 @@
               </div>
             </div>
             <div class="item border-top pt-1 is-size-7 text-muted mb-6">
-              <div class="item-body">Classification: Intermediate</div>
-              <div class="item-end">Reward range: 50-250 tokens.</div>
+              <div class="item-body">Classification: {{ taskClassification }}</div>
+              <div class="item-end">Reward range:
+                <div v-if="taskClassification === 'simple'">5-50 tokens</div>
+                <div v-else-if="taskClassification === 'intermediate'">50-250 tokens</div>
+                <div v-else-if="taskClassification === 'complex'">250-1000 tokens</div>
+                <div v-else>Unknown classification</div>
+              </div>
             </div>
             <h4 class="title ml-3">AI Reasoning</h4>
             <ul class="list text-neutral is-size-7">
@@ -113,7 +118,8 @@
           </template>
           <div v-else class="text-center">
             <p class="text-center">Not scored yet</p>
-            <button class="button is-primary is-clear" @click="handleAIEvaluation">
+            <span v-if="isLoading" class="loader mx-auto"></span>
+            <button v-else class="button is-primary is-clear" @click="handleAIEvaluation">
               <span class="icon">
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M2 21v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H5.414l.541.541.31.286A8.749 8.749 0 0 0 12.003 20 7.999 7.999 0 0 0 20 12a1 1 0 1 1 2 0 10 10 0 0 1-10 10h-.004a10.75 10.75 0 0 1-7.05-2.67l-.393-.363L4 18.414V21a1 1 0 1 1-2 0Zm0-9A10 10 0 0 1 12 2h.004l.519.015a10.75 10.75 0 0 1 6.53 2.655l.394.363.553.553V3a1 1 0 1 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 1 1 0-2h2.586l-.541-.541-.31-.286A8.75 8.75 0 0 0 11.996 4 8 8 0 0 0 4 12a1 1 0 1 1-2 0Z"/></svg>
               </span>
@@ -260,10 +266,26 @@
   const sectionTitle = ref('Workstreams')
   const sectionSubtitle = ref(workstream?.title || '')
   const activeTab = ref('details')
+  
+  const calculateTaskScore = (task) => {
+    if (!task || !task.score) return 0;
+    const { valueAdded, complexity, scope } = task.score;
+    return (valueAdded + complexity + scope) / 3;
+  }
+
+  const classifyTask = (task) => {
+    if (!task || !task.score) return 'unknown';
+    const s = calculateTaskScore(task);
+    if (s <= 0) return 'unknown';
+    if (s <= 0.33) return 'simple';
+    if (s <= 0.66) return 'intermediate';
+    return 'complex';
+  }
 
   const isLoading = ref(false);
   const evaluationResult = ref(null);
   const error = ref(null);
+  const taskClassification = ref(classifyTask(task));
 
   const getTaskStatusBadge = (status) => {
     const map = {
@@ -293,8 +315,6 @@
   })
 
   // Datos de ejemplo para el prompt y el texto a analizar
-  const userPrompt = "Analiza el sentimiento de este texto y resume su contenido en no más de 50 palabras.";
-  const textToAnalyze = "El producto recibido superó mis expectativas. La calidad es excepcional y la entrega fue sorprendentemente rápida. ¡Definitivamente lo recomendaré a mis amigos!";
   // en task?.description está la descripción a evaluar
 
   isLoading.value = false;
@@ -312,11 +332,43 @@
         method: 'POST',
         body: {
           task: task, // Convertimos la tarea a JSON
+          workstream: workstream, // Convertimos el workstream a JSON
         }
       });
 
       if (response && response.success) {
-        evaluationResult.value = response.evaluationResult;
+        const parsedJson = parseCodeBlockToJson(response.evaluationResult);
+        if (parsedJson) {
+          console.log("JSON parseado exitosamente:");
+          console.log(parsedJson);
+          // Puedes acceder a sus propiedades, por ejemplo:
+          // console.log(parsedJson.valor_agregado.score);
+          task.score = {
+            valueAdded: parsedJson.valor_agregado.score,
+            complexity: parsedJson.complejidad.score,
+            scope: parsedJson.magnitud_trabajo.score,
+            total: 0,
+          };
+          const s = calculateTaskScore(task);
+          taskClassification.value = classifyTask(task);
+          const getScoreTotal = () => {
+            switch (taskClassification.value) {
+              case 'simple':
+                return 5 + (s / 0.33) * 45; // 5-50 tokens
+              case 'intermediate':
+                return 50 + (s / 0.66) * 200; // 50-250 tokens
+              case 'complex':
+                return 250 + (s / 1) * 750; // 250-1000 tokens
+              default:
+                return 0 // Unknown classification
+            };
+          };
+          task.score.total = Math.round(getScoreTotal());
+          console.log("Tarea actualizada con la puntuación AI:", task.score);
+        } else {
+          console.log("No se pudo parsear el JSON.");
+        }
+        evaluationResult.value = parsedJson;
       } else {
         error.value = 'No se pudo obtener una respuesta válida de la evaluación AI.';
       }
@@ -325,6 +377,25 @@
       error.value = err.data?.message || 'Ocurrió un error inesperado al procesar la evaluación.';
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  function parseCodeBlockToJson(jsonString) {
+    // Expresión regular para capturar el contenido dentro de ```json ... ```
+    const regex = /```json\s*([\s\S]*?)\s*```/;
+    const match = jsonString.match(regex);
+
+    if (match && match[1]) {
+      try {
+        // Intentar parsear el contenido capturado como JSON
+        return JSON.parse(match[1]);
+      } catch (error) {
+        console.error("Error al parsear el JSON:", error);
+        return null;
+      }
+    } else {
+      console.error("No se encontró un bloque de código JSON válido.");
+      return null;
     }
   }
 </script>

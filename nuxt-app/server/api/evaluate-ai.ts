@@ -3,22 +3,23 @@ import { callGeminiApi } from '../utils/geminiApi'; // Importar la función
 import { generateTaskAIEvaluationPrompt } from '../utils/aiPrompts'; // Importar la función de generación de prompt
 
 export default defineEventHandler(async (event) => {
-  const { task } = await readBody(event);
+  const { task, workstream } = await readBody(event);
 
-  if (!task) {
+  if (!task || !workstream) {
     throw createError({
       statusCode: 400,
-      message: 'Se requiere una tarea para analizar.'
+      message: 'Se requiere una tarea y un workstream para analizar.'
     });
   }
 
+  console.log('Tarea recibida para evaluación AI:', task);
+  console.log('Workstream recibido para evaluación AI:', workstream);
+
   const prompt = generateTaskAIEvaluationPrompt(
-    task.name,
-    task.content,
-    task.parentContent || '',
-    task.parentName || '',
-    task.planName || '',
-    task.planContent || ''
+    task.title,
+    task.description,
+    workstream.title,
+    workstream.description,
   );
 
   try {

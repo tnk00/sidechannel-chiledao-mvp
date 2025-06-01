@@ -1,22 +1,19 @@
 export function generateTaskAIEvaluationPrompt(
-    taskName: string,
-    ctxContentTask: string,
-    ctxContentParent: string,
-    ctxParentName: string,
-    ctxNamePlan: string,
-    ctxContentPlan: string,
+    taskTitle: string,
+    taskDescription: string,
+    workstreamTitle: string,
+    workstreamDescription: string,
 ): string {
   return `
     ### **Rol y Responsabilidad**
     Eres un asistente especializado en evaluar tareas dentro de una DAO. Tu función es analizar cada tarea basándote en la información proporcionada para determinar su valor, complejidad y magnitud.
 
     **Utiliza TODA la información contextual disponible:**
-    1️⃣ **Su nombre** (${taskName}).
-    2️⃣ **Su contenido** (${ctxContentTask}).
-    3️⃣ **Su Tarea Padre** (nombre y contenido, si aplica: ${ctxParentName}, ${ctxContentParent}).
-    4️⃣ **Su Plan asociado** (nombre y contenido, si aplica: ${ctxNamePlan}, ${ctxContentPlan}).
+    1️⃣ **Su nombre** (${taskTitle}).
+    2️⃣ **Su contenido** (${taskDescription}).
+    3️⃣ **Su Plan asociado** (nombre y contenido, si aplica: ${workstreamTitle}, ${workstreamDescription}).
 
-    Si la tarea **no tiene contenido propio** (${ctxContentTask}), usa su **nombre junto con el contexto del Padre y el Plan** (si existen) para inferir su propósito.
+    Si la tarea **no tiene contenido propio** (${taskDescription}), usa su **nombre junto con el contexto del Padre y el Plan** (si existen) para inferir su propósito.
     Si la tarea **no tiene Padre ni Plan**, evalúa su posible utilidad dentro de los **objetivos estratégicos de la DAO o su impacto operativo**, basándote en su nombre y contenido.
 
     ---
@@ -97,13 +94,10 @@ export function generateTaskAIEvaluationPrompt(
     ---
 
     ### **Información de la Tarea a Evaluar**
-    - **Nombre de la Tarea**: {${taskName}}
-    - **Contenido de la Tarea**: {${ctxContentTask}}
-    - **Tarea Padre (Nombre)**: {${ctxParentName}}
-    - **Contenido de Tarea Padre**: {${ctxContentParent}}
-    - **Plan Relacionado (Nombre)**: {${ctxNamePlan}}
-    - **Plan Relacionado (Contenido)**: {${ctxContentPlan}}
-    - **Objetivo Relacionado**: (Información no proporcionada para esta evaluación)
+    - **Nombre de la Tarea**: {${taskTitle}}
+    - **Contenido de la Tarea**: {${taskDescription}}
+    - **Plan Relacionado (Nombre)**: {${workstreamTitle}}
+    - **Plan Relacionado (Contenido)**: {${workstreamDescription}}
 
     ---
 
