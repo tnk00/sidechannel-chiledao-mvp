@@ -17,7 +17,7 @@
 
   .menu-link {
     line-height: $heading-line-height;
-    color: var(--color-neutral);
+    color: var(--color-shaded);
     display: flex;
     padding: map.get($spacers, 3);
     padding-left: map.get($spacers, 5);
@@ -27,12 +27,12 @@
     
 
     &:hover {   
-      color: var(--color-neutral);   
+      color: var(--color-shaded);   
       background-color: color-mix(in srgb, transparent, var(--color-variant) 5%);
     }
 
     &.is-active {
-      color: var(--body-color);
+      color: var(--color-variant);
       background-color: var(--color-shaded);
     }
   }
@@ -40,7 +40,7 @@
 
 
 .menu-label {
-  color: $light;
+  color: var(--color-shaded);
   font-size: $size-8;
   font-weight: $weight-medium;
   line-height: $heading-line-height;

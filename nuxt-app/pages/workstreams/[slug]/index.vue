@@ -98,6 +98,10 @@
             <div class="task-reward" v-else="task.score">
               <div class="score-total">
                 <div class="line-height-1 is-size-2">-</div>
+                <!-- 
+                Version con loader:
+                <div class="line-height-1 is-size-2"><span class="loader"></span></div> 
+                -->
                 <span class="heading-line-height">Reward</span>
               </div>
             </div>
