@@ -5,6 +5,7 @@
 
 $window-width: 500px !default;
 $overlay-background-color: rgb(0 0 0 / 0.5) !default;
+$overlay-backdrop-filter: blur(2px) grayscale(30%) !default;
 
 
 //
@@ -120,4 +121,19 @@ $overlay-background-color: rgb(0 0 0 / 0.5) !default;
     padding: map.get($spacers, 3) map.get($spacers, 3);
     border-radius: 0 0 calc(#{$radius-md} - 1px) calc(#{$radius-md} - 1px);
   }
+}
+
+
+// 
+// Separate background element
+// 
+
+.dialog-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // background-color: $overlay-background-color;
+  // backdrop-filter: $overlay-backdrop-filter;
 }

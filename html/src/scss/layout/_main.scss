@@ -1,6 +1,13 @@
 @use 'sass:map';
 @use '../variables' as *;
 
+
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;

@@ -413,6 +413,25 @@ button > * {
   line-height: 1;
 }
 
+.avatar {
+  max-width: 56px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  background-color: var(--color-neutral);
+}
+.avatar img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.avatar a {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
 .badge {
   font-size: 0.75rem;
   padding: 0.1875em 0.75em;
@@ -1418,7 +1437,7 @@ a.badge {
 }
 .menu .menu-link {
   line-height: 1.2;
-  color: var(--color-neutral);
+  color: var(--color-shaded);
   display: flex;
   padding: 1rem;
   padding-left: 2rem;
@@ -1427,16 +1446,16 @@ a.badge {
   transition: 0.05s;
 }
 .menu .menu-link:hover {
-  color: var(--color-neutral);
+  color: var(--color-shaded);
   background-color: color-mix(in srgb, transparent, var(--color-variant) 5%);
 }
 .menu .menu-link.is-active {
-  color: var(--body-color);
+  color: var(--color-variant);
   background-color: var(--color-shaded);
 }
 
 .menu-label {
-  color: #C4C7CA;
+  color: var(--color-shaded);
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.2;
@@ -1594,6 +1613,14 @@ a.badge {
 .window .window-footer {
   padding: 1rem 1rem;
   border-radius: 0 0 calc(0.5rem - 1px) calc(0.5rem - 1px);
+}
+
+.dialog-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .navbar {
@@ -1776,7 +1803,6 @@ a.badge {
 }
 
 .main-sidebar {
-  color: var(--color-variant);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -1786,7 +1812,7 @@ a.badge {
   height: 100%;
   overflow: hidden;
   transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
-  background-color: var(--color-shaded);
+  background-color: var(--color-muted);
   position: relative;
   z-index: 1;
 }
@@ -1829,8 +1855,8 @@ a.badge {
   display: flex;
   align-items: center;
   height: var(--navbar-height);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 .sidebar-content .sidebar-bottom {
   padding-top: 1rem;
@@ -1865,6 +1891,7 @@ a.badge {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   padding-left: 1.5rem;
   padding-top: 0.5rem;
@@ -1877,6 +1904,65 @@ a.badge {
   align-items: center;
   margin-right: 1rem;
   line-height: 1.2;
+}
+
+.dialog-wallet {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.wallet-modal-container {
+  height: 100%;
+  width: 100%;
+  max-width: 320px;
+  transition: 0.2s cubic-bezier(0, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.wallet-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-muted);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.wallet-modal-header,
+.wallet-modal-body,
+.wallet-modal-footer {
+  padding: 1rem;
+}
+
+.wallet-modal-header,
+.wallet-modal-footer {
+  flex-shrink: 0;
+}
+
+.wallet-modal-body {
+  min-width: 0;
+  min-height: 0;
+  flex-grow: 1;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.wallet-modal-scroller {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .block {
@@ -2670,6 +2756,12 @@ a.badge {
 }
 .list-link.is-active {
   color: var(--body-color);
+}
+
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .app-container {
@@ -3668,6 +3760,14 @@ a.badge {
     order: -1;
   }
 }
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
 .w-100 {
   width: 100% !important;
 }

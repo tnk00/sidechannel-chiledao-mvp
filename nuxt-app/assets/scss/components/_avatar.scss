@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+
+$avatar-size: 56px !default;
+
+.avatar {
+  max-width: $avatar-size;
+  border-radius: $radius-rounded;
+  aspect-ratio: 1/1;
+  background-color: var(--color-neutral);
+
+  img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;    
+    border-radius: $radius-rounded;
+  }
+
+  a {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+}
