@@ -58,33 +58,24 @@ function onClickOutside(e) {
     close()
   }
 }
-
-onMounted(() => {
-  document.body.classList.add('overflow-hidden')
-})
-
-onUnmounted(() => {
-  document.body.classList.remove('overflow-hidden')
-})
 </script>
 
 <style lang="scss" scoped>
   // https://vuejs.org/guide/built-ins/transition.html
-.slide-down-enter-active,
-.slide-down-leave-active {
-  transition: all 0.15s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
+  .slide-down-enter-active,
+  .slide-down-leave-active {
+    transition: all 0.15s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
 
-.slide-down-enter-from,
-.slide-down-leave-to {
-  opacity: 0;
-  transform: translateY(-15px);
-}
+  .slide-down-enter-from,
+  .slide-down-leave-to {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
 
-.slide-down-enter-to,
-.slide-down-leave-from {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+  .slide-down-enter-to,
+  .slide-down-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
