@@ -293,7 +293,7 @@
       'in-progress': { text: 'In progress', class: 'is-primary' },
       done: { text: 'Done', class: 'is-success' }
     }
-    return map[status] || { text: 'Unknown', class: 'is-muted' }
+    return map[status] || { text: 'Pending', class: 'is-muted' }
   }
 
   const getPriorityDot = (priority) => {
