@@ -19,6 +19,11 @@ export const useWorkstreamsStore = defineStore('workstreams', () => {
             complexity: 0.5,
             scope: 0.4,
             total: 173
+          },
+          reasoning: {
+            valueAdded: 'La ficha informativa es una herramienta clave para atraer y educar a estudiantes sobre blockchain, alineada con los objetivos de visibilidad y educación de ChileDAO.',
+            complexity: 'El diseño gráfico requiere habilidades específicas, pero es manejable con herramientas como Figma.',
+            scope: 'El alcance es limitado a la difusión digital, pero efectivo para el público objetivo.'
           }
         },
         { id: 'tas-64',
@@ -32,6 +37,11 @@ export const useWorkstreamsStore = defineStore('workstreams', () => {
             complexity: 0.6,
             scope: 0.5,
             total: 234
+          },
+          reasoning: {
+            valueAdded: 'La ficha informativa es una herramienta clave para atraer y educar a estudiantes sobre blockchain, alineada con los objetivos de visibilidad y educación de ChileDAO.',
+            complexity: 'El diseño gráfico requiere habilidades específicas, pero es manejable con herramientas como Figma.',
+            scope: 'El alcance es limitado a la difusión digital, pero efectivo para el público objetivo.'
           }
         },
         { id: 'tas-65',

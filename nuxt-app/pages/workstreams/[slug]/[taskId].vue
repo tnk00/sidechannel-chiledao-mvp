@@ -95,20 +95,20 @@
             <ul class="list text-neutral is-size-7">
               <li class="list-item">
                 <div class="border border-dashed radius-medium p-2 p-3-mobile">
-                  <b class="d-block mb-1">Value Added (0.7)</b>
-                  <p>La tarea contribuye a la educación y adopción tecnológica (Objetivo Estratégico 2) al difundir información sobre blockchain entre estudiantes. La ficha informativa, aunque introductoria, facilita el acceso a Web3 y promueve la marca ChileDAO, lo que está alineado con el plan de operaciones.</p>
+                  <b class="d-block mb-1">Value Added ({{ task.score.valueAdded }})</b>
+                  <p>{{ task.reasoning.valueAdded }}</p>
                 </div>
               </li>
               <li class="list-item">
                 <div class="border border-dashed radius-medium p-2 p-3-mobile">
-                  <b class="d-block mb-1">Complexity (0.5)</b>
-                  <p>El diseño en Figma requiere habilidades intermedias de diseño gráfico. La distribución mediante código QR implica una coordinación técnica simple pero efectiva. No requiere habilidades de desarrollo avanzadas.</p>
+                  <b class="d-block mb-1">Complexity ({{ task.score.complexity }})</b>
+                  <p>{{ task.reasoning.complexity }}</p>
                 </div>
               </li>
               <li class="list-item">
                 <div class="border border-dashed radius-medium p-2 p-3-mobile">
-                  <b class="d-block mb-1">Scope of Work (0.4)</b>
-                  <p>El diseño de la ficha y la implementación del código QR requiere planificación y atención al detalle, pero no implica un esfuerzo prolongado. La distribución digital es relativamente sencilla una vez creada la pieza gráfica.</p>
+                  <b class="d-block mb-1">Scope of Work ({{ task.score.scope }})</b>
+                  <p>{{ task.reasoning.scope }}</p>
                 </div>
               </li>
             </ul>
@@ -348,6 +348,11 @@
             complexity: parsedJson.complejidad.score,
             scope: parsedJson.magnitud_trabajo.score,
             total: 0,
+          };
+          task.reasoning = {
+            valueAdded: parsedJson.valor_agregado.reasoning,
+            complexity: parsedJson.complejidad.reasoning,
+            scope: parsedJson.magnitud_trabajo.reasoning,
           };
           const s = calculateTaskScore(task);
           taskClassification.value = classifyTask(task);
