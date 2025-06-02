@@ -3,9 +3,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   nitro: {
-    preset: 'netlify', // O 'netlify-edge' si quieres usar Edge Functions
+    preset: 'netlify',
   },
-  ssr: true,
 
   app: {
     head: {

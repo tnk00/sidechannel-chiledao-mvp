@@ -12,7 +12,9 @@
       </div>
     </div>
   </div>
-  <WalletConnectModal :show="showWallet" @close="closeWalletModal" />
+  <ClientOnly>
+    <WalletConnectModal :show="showWallet" @close="closeWalletModal" />
+  </ClientOnly>  
 </template>
 
 <script setup>
